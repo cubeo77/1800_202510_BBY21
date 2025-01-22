@@ -63,9 +63,15 @@ project-name/
 
 ## Contributors
 
+<<<<<<< HEAD
+=======
+- *Hi, my name is Esin! I am excited to see the the great ideas come out of this project!
+
+>>>>>>> 182388ee1b6ccf3139daa1353d9b7bfc24f82f8d
 - Blair C. Tate - Student at BCIT with a love for art and math ;d
-- **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+
+ 
+
 
 ---
 
