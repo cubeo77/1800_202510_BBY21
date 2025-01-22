@@ -63,10 +63,11 @@ project-name/
 
 ## Contributors
 
-- **Ashmeet** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **BBY21** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- Blair C. Tate - Student at BCIT with a love for art and math ;d
+- **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
+- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
-## Hi, my name is Ashmeet ! I am exicted to start this journey of creating a web application!
+---
 
 ## Acknowledgments
 
