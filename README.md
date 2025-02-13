@@ -66,9 +66,8 @@ project-name/
 - *Hi, my name is Esin! I am excited to see the the great ideas come out of this project!
 
 - Blair C. Tate - Student at BCIT with a love for art and math ;d
-
- 
-
+- Ashmeet Singh - I love to Cook.
+- Hi, my name is Esin-Im excited to see great ides come out of this projects!
 
 ---
 
