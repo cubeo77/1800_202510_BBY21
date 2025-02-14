@@ -1,68 +1,79 @@
-*{
-    margin: 0pt;
-    padding: 0pt;
+* {
+  margin: 0pt;
+  padding: 0pt;
 }
-#container{
-    height: 100%;
-    width: 100%;
-    background-color: rgb(205, 205, 205);
+#container {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(205, 205, 205);
 }
 body {
   font-family: Arial, sans-serif;
   background-color: #d8d8d8;
 }
-.top-nav{
+.top-nav {
   display: flex;
   align-items: center;
-  padding: .5rem;
+  padding: 0.5rem;
 
   width: 100%;
 }
-.top-nav-icon{
+.top-nav-icon {
   width: 20%;
   display: flex;
 
   justify-content: center;
   align-items: center;
-
 }
-.top-nav-icon1{
+.top-nav-icon1 {
   width: 20%;
   display: flex;
 
   margin-left: 60%;
   justify-content: center;
   align-items: center;
-
+}
+.card {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  border-color: #000000;
+  border-width: 2px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  .card-title {
+    font-weight: bolder;
+  }
 }
 .welcome-text {
-    text-align: center;
-    padding: 2rem;
+  text-align: center;
+  padding: 2rem;
 }
 .welcome-text h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .welcome-text p {
-    color: #000000;
-    line-height: 1.5;
+  color: #000000;
+  line-height: 1.5;
 }
 .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-    background-color: #afa9a9;
-    border-top: 1px solid #e0e0e0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background-color: #afa9a9;
+  border-top: 1px solid #e0e0e0;
 }
 .nav-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
-
