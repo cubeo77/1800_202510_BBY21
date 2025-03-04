@@ -2,10 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriGuard</title>
+    <title>Nutri Guard</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!------------------------>
+    <!-- Required meta tags -->
+    <!------------------------>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/styles/style.css">
+
     <!------------------------------------------>
     <!-- Bootstrap Library CSS JS CDN go here -->
     <!------------------------------------------>
@@ -31,58 +37,42 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
-        <button class="menu-btn">☰</button>
-        <div class="logo">
-            <span>Nutri</span>
-            <div class="logo-circle"></div>
-            <span>Guard</span>
-        </div>
-        <button class="profile-btn">👤</button>
-    </header>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-    <!-- Main Content -->
-    <main>
-
-
-        <div class="welcome-text">
-            <h1>Welcome to NutriGuard!</h1>
-            <p>Find foods which work well<br>for your medical condition!</p>
-        </div>
-
-
-        <div class="rounded-circle overflow-hidden">
-            <img class="responsive" src="/images/icon.jpg" alt="">
-        </div>
-
-        
-        <div class="center-button">
-            <a href="login.html" class="btn btn-success" role="button">Log in</a>
-        </div>
-        
-    </main>
-
-    <!-- Navigation Bar -->
-    <nav class="bottom-nav">
+    <!-- our own navbar goes here -->
+    <nav class="top-nav">
+        <span>Nutri</span>
+        <div class="logo-circle"></div>
+        <span>Guard</span>
 
     </nav>
+
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+    <div class="container">
+        <h1>Let's Login!</h1>
     </div>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
-
+     <div class="center-button">
+        <img src="./images/giphy.gif">
+     </div>
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY21.js"></script>
-    <script src="./scripts/skeleton.js"></script>
+
+    <script src="./scripts/authentication.js"></script>
     <!-- <script src="./scripts/script.js"></script> -->
-    <script>
-        logout();       //make sure user is logged out
-    </script>
+
 </body>
 
 </html>
