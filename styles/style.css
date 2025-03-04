@@ -1,64 +1,90 @@
 * {
-  margin: 0pt;
-  padding: 0pt;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-#container {
-  height: 100%;
-  width: 100%;
-  background-color: rgb(205, 205, 205);
-}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #d8d8d8;
+  background-color: #ffffff;
+ } 
+  
+.top-nav{
+  background-color: rgb(164, 236, 135);
+  padding: 15px;
 }
-.top-nav {
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(164, 236, 135);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.menu-btn, .profile-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.icon{
+  align-items: center;
+  width: 15px;
+  height: auto;
+}
+.logo {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 
-  width: 100%;
+.logo-circle {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(to right, #000 0%, #000 50%, #fff 50%, #fff 100%);
+  border-radius: 50%;
+  margin: 0 5px;
 }
-.top-nav-icon {
-  width: 20%;
-  display: flex;
 
-  justify-content: center;
-  align-items: center;
-}
-.top-nav-icon1 {
-  width: 20%;
-  display: flex;
 
-  margin-left: 60%;
-  justify-content: center;
-  align-items: center;
-}
-.card {
-  display: block;
-  justify-content: center;
-  text-align: center;
-  border-radius: 20px;
-  border-color: #000000;
-  border-width: 2px;
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  .card-title {
-    font-weight: bolder;
-  }
-}
+/* Welcome Text Styles */
 .welcome-text {
   text-align: center;
   padding: 2rem;
+  margin-top: 70px;
 }
+
 .welcome-text h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
+
 .welcome-text p {
-  color: #000000;
+  color: #666;
   line-height: 1.5;
 }
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+.rounded-circle {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  /* Centers the circle horizontally */
+}
+/* Bottom Navigation */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -67,9 +93,10 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
-  background-color: #afa9a9;
+  background-color: #f8f8f8;
   border-top: 1px solid #e0e0e0;
 }
+
 .nav-btn {
   background: none;
   border: none;
@@ -77,3 +104,24 @@ body {
   cursor: pointer;
   padding: 0.5rem;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel {
+      height: 250px;
+  }
+  
+  .carousel-caption {
+      font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+      height: 200px;
+  }
+  
+  .welcome-text h1 {
+      font-size: 1.2rem;
+  }
+} 
