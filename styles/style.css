@@ -23,18 +23,24 @@ body {
  } 
   
 .top-nav{
-  background-color: rgb(164, 236, 135);
-  padding: 15px;
 }
 
 /* Header Styles */
 header {
-  background-color: #d8d8d8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(164, 236, 135);
+  border-bottom: 1px solid #e0e0e0;
 }
 .top-nav {
   grid-row: 1;
   position: fixed;
   top: 0;
+
+  background-color: rgb(164, 236, 135);
+  padding: 15px;
 
   display: flex;
   justify-content: space-between;
