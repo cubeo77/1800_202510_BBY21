@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page - Template</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/indexmain.css">
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
@@ -25,13 +25,6 @@
     <link rel="stylesheet" href="styles/style.css">
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 </head>
 
 <body>
@@ -71,17 +64,22 @@
             <!--All Page Content Goes Here------------------------------------------------------------>
             <!---------------------------------------------------------------------------------------->
 
+            <div class="card-container">
+                <a href="https://example.com/ibs" class="card">
+                  <img src="./images/ibs.jpg" class="card-img-top" alt="IBS">
+                </a>
+                <a href="https://example.com/diabetes" class="card">
+                  <img src="./images/Diabetes.png" class="card-img-top" alt="Diabetes">
+                </a>
+                <a href="https://example.com/celiac" class="card">
+                  <img src="./images/celiac (2).png" class="card-img-top" alt="Celiac">
+                </a>
+              </div>
 
- <div class="container">
-        <h1>Let's Login!</h1>
-    </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
-     <div class="center-button">
-        <img src="./images/giphy.gif">
-     </div>
+              <div class="welcome-text">
+                <h1>Welcome to NutriGuard!</h1>
+                <p>Find foods which work well<br>for your medical condition!</p>
+            </div>
             <!---------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------->
@@ -129,10 +127,6 @@
         crossorigin="anonymous"></script>
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-
-    <script src="./scripts/firebaseAPI_BBY21.js"></script>
-
-    <script src="./scripts/authentication.js"></script>
 </body>
 
 </html>
