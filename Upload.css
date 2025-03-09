@@ -1,0 +1,101 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adjusts spacing between sections */
+}
+
+/* Uploading Section */
+.uploading .file-upload-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload-label {
+  cursor: pointer;
+  background-color: #ddd;
+  padding: 30px 70px;
+  border-radius: 10px; /* Reduced border-radius */
+  border: 2px dashed rgb(82, 82, 82);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+.file-upload-label svg {
+  height: 50px;
+  fill: rgb(82, 82, 82);
+  margin-bottom: 10px; /* Reduced spacing */
+}
+
+/* Hide the file input */
+#file {
+  display: none;
+}
+
+/* Style the browse button */
+.browse-button {
+  background-color: rgb(82, 82, 82);
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.3s;
+  cursor: pointer; /* Makes it clickable */
+  display: inline-block; /* Ensures proper spacing */
+}
+
+.browse-button:hover {
+  background-color: rgb(14, 14, 14);
+}
+
+/* Description Box */
+.description input {
+  width: 200px; /* Reduced width to match the image */
+  padding: 8px;
+  text-align: center; /* Centers placeholder text */
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  background: rgb(254, 255, 253);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Tag Cards (Diabetic, IBS, Celiac) */
+.card-container {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  width: 80px; /* Reduced width */
+  height: 50px; /* Reduced height */
+  background: rgba(217, 217, 217, 0.8);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card:nth-child(1) {
+  background: #71c138;
+} /* Lightest */
+.card:nth-child(2) {
+  background: #47e657;
+} /* Medium */
+.card:nth-child(3) {
+  background: #4d7f0b;
+  color: white;
+} /* Darkest */
+
+.card:hover {
+  transform: scale(1.1);
+}

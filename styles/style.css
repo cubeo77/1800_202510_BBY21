@@ -7,10 +7,10 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
- } 
-  
-.top-nav{
-  background-color: rgb(164, 236, 135);
+}
+
+.top-nav {
+  background-color: #43c01d;
   padding: 15px;
 }
 
@@ -20,17 +20,18 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: rgb(164, 236, 135);
+  background-color: #43c01d;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.menu-btn, .profile-btn {
+.menu-btn,
+.profile-btn {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
-.icon{
+.icon {
   align-items: center;
   width: 15px;
   height: auto;
@@ -49,7 +50,6 @@ header {
   border-radius: 50%;
   margin: 0 5px;
 }
-
 
 /* Welcome Text Styles */
 .welcome-text {
@@ -108,20 +108,20 @@ header {
 /* Responsive Design */
 @media (max-width: 768px) {
   .carousel {
-      height: 250px;
+    height: 250px;
   }
-  
+
   .carousel-caption {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .carousel {
-      height: 200px;
+    height: 200px;
   }
-  
+
   .welcome-text h1 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
-} 
+}
