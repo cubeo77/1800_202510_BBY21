@@ -19,21 +19,17 @@ Main Structure - Do Not Change ---------------------------------
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-<<<<<<< HEAD
 }
 
 .top-nav {
   background-color: #43c01d;
   padding: 15px;
 }
-=======
- } 
 .body-container{
   grid-row: 2;
   width: 100%;
   height: 100%;
   overflow-y: auto;
->>>>>>> cdae394560e3801d1e184e0de334828f20a92d1a
 
   background-color: rgb(219, 231, 211);
 }
@@ -108,11 +104,13 @@ Navigation - Do not Change -------------------------------------
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
-  padding: 1rem;
-  background-color: #43c01d;
-  border-bottom: 1px solid #e0e0e0;
+
+  grid-row: 3;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(126, 162, 120);
 }
+
 
 .menu-btn,
 .profile-btn {
@@ -131,13 +129,6 @@ Navigation - Do not Change -------------------------------------
   align-items: center;
   font-size: 1.2rem;
   font-weight: bold;
-=======
-
-  grid-row: 3;
-  height: 100%;
-  width: 100%;
-  background-color: rgb(126, 162, 120);
->>>>>>> cdae394560e3801d1e184e0de334828f20a92d1a
 }
 .bottom-nav-icon{
   justify-content: center;
@@ -165,9 +156,7 @@ Navigation - Do not Change -------------------------------------
 ----------------------------------------------------------------
 */
 
-<<<<<<< HEAD
 /* Welcome Text Styles */
-=======
 
 /*
 ----------------------------------------------------------------
@@ -219,7 +208,6 @@ Food Index - For Scrolling Pages -------------------------------
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 */
->>>>>>> cdae394560e3801d1e184e0de334828f20a92d1a
 .welcome-text {
   text-align: center;
   padding: 2rem;
