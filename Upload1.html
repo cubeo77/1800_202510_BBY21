@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+
+    <!-- Other libraries go here -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/Upload.css" />
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+
+<body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <div id="container">
+
+        <!--------------------------------------------------->
+        <!--Top Nav------------------------------------------>
+        <!--------------------------------------------------->
+        <div class="top-nav2">
+            <a href="">
+                <div class="navLogo">
+                    <img src="images/NUTRIGURARD2.png" alt="">
+                </div>
+            </a>
+            <div class="navIcons">
+                <a href="">
+                    <div class="top-nav-icon">
+                        <img src="images/cottage_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="top-nav-icon">
+                        <img src="images/person_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+
+
+        <div class="body-container">
+            <!---------------------------------------------------------------------------------------->
+            <!--All Page Content Goes Here------------------------------------------------------------>
+            <!---------------------------------------------------------------------------------------->
+            <div class="parent">
+                <!-- Uploading  -->
+                <div class="uploading">
+                  <form class="file-upload-form">
+                    <label for="file" class="file-upload-label">
+                      <div class="file-upload-design">
+                        <svg viewBox="0 0 640 512" height="1em">
+                          <path
+                            d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
+                          ></path>
+                        </svg>
+                        <p>Drag and Drop</p>
+                        <p>or</p>
+                        <span class="browse-button">Browse file</span>
+                      </div>
+                      <input id="file" type="file" />
+                    </label>
+                  </form>
+                </div>
+          
+                <!-- Description  -->
+                <div class="description">
+                  <label for="inputname">Description</label>
+                  <input type="text" id="inputname" name="inputname" placeholder="Short Description" />
+                </div>
+          
+                <!-- Card  -->
+                <div class="card-container">
+                  <div class="card">Diabetic</div>
+                  <div class="card">IBS</div>
+                  <div class="card">Celiac</div>
+                </div>
+              </div>
+
+
+            <!---------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------->
+
+            <!--Do Not remove---------------------------->
+            <div class="space"></div>
+            <!--Do Not remove---------------------------->
+        </div>
+
+        <!--------------------------------------------------->
+        <!--Bottom Nav--------------------------------------->
+        <!--------------------------------------------------->
+        <nav class="bottom-nav2">
+
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+        </nav>
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+
+    </div>
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+</body>
+
+</html>
