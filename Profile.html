@@ -1,55 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/profile.css" />
+
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FireBase/FireStore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap Library JS CDN  go here -->
+
+    <!-- Other libraries go here -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
+</head>
+
+<body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <div id="container">
+
+        <!--------------------------------------------------->
+        <!--Top Nav------------------------------------------>
+        <!--------------------------------------------------->
+        <div class="top-nav2">
+            <a href="">
+                <div class="navLogo">
+                    <img src="images/NUTRIGURARD2.png" alt="">
+                </div>
+            </a>
+            <div class="navIcons">
+                <a href="">
+                    <div class="top-nav-icon">
+                        <img src="images/cottage_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    </div>
+                </a>
+                <a href="">
+                    <div class="top-nav-icon">
+                        <img src="images/person_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                    </div>
+                </a>
+            </div>
         </div>
-      </div>
-    </nav>
-  </body>
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+
+
+        <div class="body-container">
+            <!---------------------------------------------------------------------------------------->
+            <!--All Page Content Goes Here------------------------------------------------------------>
+            <!---------------------------------------------------------------------------------------->
+
+            <div class="profile-container">
+                <div class="profile-img">
+                  <img
+                    src="/images/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.png"
+                    alt="Profile Image"
+                    class="profile-img"
+                  />
+                </div>
+                <div class="info">
+                  <p>4 <br>posts</br></p>
+                  <p>100K <br>followers</br></p>
+                  <p>1 <br>following</br></p>
+                </div>
+          
+                <div class="button-container">
+                  <button class="share-profile">Share profile</button>
+                  <button class="edit-profile">Edit profile</button>
+                </div>
+                <div class="imggif">
+                  <img src="/images/giphy.gif" alt="Small Profile Image" class="small-img" />
+                  <img src="/images/giphy.gif" alt="Small Profile Image" class="small-img" />
+                </div>
+              </div>
+          
+              <div class="post">
+                <div class="card">
+                  <img src="/images/food1.jpg" class="card-img-top" alt="Example Image 1" />
+                </div>
+                <div class="card">
+                  <img src="/images/food2.jpeg" class="card-img-top" alt="Example Image 2" />
+                </div>
+                <div class="card">
+                  <img src="/images/food3.jpg" class="card-img-top" alt="Example Image 3" />
+                </div>
+                <div class="card">
+                  <img src="/images/food4.jpg" class="card-img-top" alt="Example Image 4" />
+                </div>
+              </div>
+
+            <!---------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------->
+
+            <!--Do Not remove---------------------------->
+            <div class="space"></div>
+            <!--Do Not remove---------------------------->
+        </div>
+
+        <!--------------------------------------------------->
+        <!--Bottom Nav--------------------------------------->
+        <!--------------------------------------------------->
+        <nav class="bottom-nav2">
+
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/add_circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+            <a href="">
+                <div class="bottom-nav-icon">
+                    <img src="images/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="">
+                </div>
+            </a>
+        </nav>
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+        <!--------------------------------------------------->
+
+    </div>
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+</body>
+
 </html>
