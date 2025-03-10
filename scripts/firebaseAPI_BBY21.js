@@ -3,7 +3,7 @@
 //----------------------------------------
 var firebaseConfig = 
 {
-    apiKey: "AIzaSyBUmyDjs51EDFfgFzqlNfDeCvplilR9X_8",
+    apiKey: "AIzaSyAmvA1dMsJYhw5RWT9AfSyYcqZvoSviWak",
     authDomain: "demo07-202510-8f468.firebaseapp.com",
     projectId: "demo07-202510-8f468",
     storageBucket: "demo07-202510-8f468.firebasestorage.app",
