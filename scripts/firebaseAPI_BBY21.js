@@ -5,7 +5,7 @@ var firebaseConfig =
 {
     apiKey: "AIzaSyAmvA1dMsJYhw5RWT9AfSyYcqZvoSviWak",
     authDomain: "demo07-202510-8f468.firebaseapp.com",
-    projectId: "demo07-202510-8f468",
+    projectId: "comp1800sprint2",
     storageBucket: "demo07-202510-8f468.firebasestorage.app",
     messagingSenderId: "603539163423",
     appId: "1:603539163423:web:36bd3f0f640ce6ba63c82a"
@@ -18,4 +18,5 @@ var firebaseConfig =
 //--------------------------------------------
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+
 
