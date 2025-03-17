@@ -1,22 +1,24 @@
-//----------------------------------------
-//  Your web app's Firebase configuration
-//----------------------------------------
-var firebaseConfig = 
-{
-    apiKey: "AIzaSyAmvA1dMsJYhw5RWT9AfSyYcqZvoSviWak",
-    authDomain: "demo07-202510-8f468.firebaseapp.com",
-    projectId: "comp1800sprint2",
-    storageBucket: "demo07-202510-8f468.firebasestorage.app",
-    messagingSenderId: "603539163423",
-    appId: "1:603539163423:web:36bd3f0f640ce6ba63c82a"
-  };
+// Import Firebase modules properly using CDN URLs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCIEt08N8EAKD2AjgGx1VghYx5XKkjipnU",
+  authDomain: "demo10singhashmeet.firebaseapp.com",
+  projectId: "demo10singhashmeet",
+  storageBucket: "demo10singhashmeet.appspot.com",
+  messagingSenderId: "430577309230",
+  appId: "1:430577309230:web:335d186a1b8420166471bf",
+  measurementId: "G-W05EP00RVC",
+};
 
-//--------------------------------------------
-// initialize the Firebase app
-// initialize Firestore database if using it
-//--------------------------------------------
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-
+export { auth, db, storage };
