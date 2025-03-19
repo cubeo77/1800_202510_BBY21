@@ -1,0 +1,37 @@
+/* Category Buttons (Inspired by Uiverse.io) */
+.category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.category-button {
+  --main-color: rgb(46, 213, 115);
+  --main-bg-color: rgba(46, 213, 116, 0.36);
+  --pattern-color: rgba(46, 213, 116, 0.073);
+
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: var(--main-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 3rem;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  background: radial-gradient(circle, var(--main-bg-color) 0%, rgba(0, 0, 0, 0) 95%);
+  transition: transform 0.2s ease-in-out, background-size 0.2s ease-in-out;
+}
+
+.category-button:hover {
+  transform: scale(1.05);
+  background-size: cover, 10px 10px, 10px 10px;
+}
+
+.category-button:active {
+  filter: hue-rotate(250deg);
+}
