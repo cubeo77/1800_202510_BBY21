@@ -68,3 +68,35 @@
 
     // Check auth state when page loads
     document.addEventListener('DOMContentLoaded', checkAuthState); 
+
+    // Firebase Auth listener to check when a user logs in
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log("User is logged in:", user);
+
+        // Retrieve temporary data from localStorage
+        const tempData = JSON.parse(localStorage.getItem("tempData"));
+
+        if (tempData) {
+            const currentUser = db.collection("users").doc(user.uid);
+
+            // Save the data to Firestore
+            currentUser.set(tempData, { merge: true })
+                .then(() => {
+                    console.log("Data successfully saved to Firestore:", tempData);
+                    alert("Your information has been saved to your account.");
+                    localStorage.removeItem("tempData"); // Clear temporary storage
+                })
+                .catch(error => {
+                    console.error("Error saving data to Firestore:", error);
+                });
+        } else {
+            console.log("No temporary data found in localStorage.");
+        }
+    } else {
+        console.log("No user is logged in.");
+    }
+});
+
+
+    
