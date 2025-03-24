@@ -9,7 +9,7 @@ async function getDocumentCount() {
 document.addEventListener("DOMContentLoaded", () => {
 
 
-    const myCollection = collection(db, "posts");
+    // const myCollection = collection(db, "posts");
 
     async function getDocumentCount() {
         const snapshot = await getCountFromServer(myCollection);

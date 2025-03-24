@@ -10,10 +10,6 @@ button.addEventListener("click", () => {
 
 
 
-// Temporary storage for form data before user logs in
-let tempData = {};
-
-
 var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
@@ -56,29 +52,27 @@ function editUserInfo() {
     document.getElementById('personalInfoFields').disabled = false;
 }
 
+
 function saveUserInfo() {
+
+    //a) Get user entered values 
+
     const userName = document.getElementById("nameInput").value;
     const userAge = document.getElementById("ageInput").value;
     const userHealthCondition = document.getElementById("healthConditionInput").value;
 
-    // Save data to Firestore (without checking if user is logged in)
-    db.collection("users").add({
+    //b) update user's document in Firestore
+    currentUser.update({
         name: userName,
         age: userAge,
         healthCondition: userHealthCondition
     })
     .then(() => {
-        console.log("User info saved to Firestore");
-        alert("Your information has been saved successfully.");
-        
+        console.log("Document successfully updated!");
     })
-    .catch((error) => {
-        console.error("Error saving user info to Firestore:", error);
-        alert("There was an error saving your information.");
-    });
+
+    //c) disable edit 
+    document.getElementById('personalInfoFields').disabled = true;
 }
-
-
-
 
 

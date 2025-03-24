@@ -24,25 +24,35 @@ body {
 }
 
 #show-template {
+  
+  width: 170px;
+  height: 60px;
   display: block; /* Ensure the button is a block-level element */
-  margin: 0 auto; /* Center the button horizontally */
+  margin: 0 auto;
+  border-radius: 40px; /* Center the button horizontally */
+  animation: flash 2s infinite; /* Apply the flashing animation */
+}
+
+.button-container :hover{
+ background-color: rgb(161, 211, 161);
+}
+
+@keyframes flash {
+  0% { background-color: #4CAF50; } /* Initial green color */
+  50% {  background-color: rgb(161, 211, 161); } /* Alternate green shade */
+  100% { background-color: #4CAF50; } /* Back to initial green */
 }
 
 
-#template-container {
+#template-container  {
   margin: 20px auto;
   padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  border: 1px solid #000000;
+  background-color: #d1d1d1;
   width: 300px;
   
+}  
   
-  
-  
-  
-}
-
-
   
 .top-nav{
   display: flex;
@@ -115,6 +125,7 @@ header {
   justify-content: center; /* Centers the cards horizontally within the container */
   align-items: center; /* Aligns the cards vertically in the container */
   align-items: stretch;
+  
 }
 
 .card {
@@ -147,9 +158,6 @@ header {
 }
 
 
-
-
-
 /* Welcome Text Styles */
 .welcome-text {
   text-align: center;
@@ -172,20 +180,22 @@ header {
   justify-content: center;
   align-items: center;
   height: 100%;
+}  
   
   
-  
-}
+
 .responsive {
   width: 100%;
   height: auto;
 }
+
 .rounded-circle {
   width: 650px;
   height: 500px;
   margin: 0 auto;
   /* Centers the circle horizontally */
 }
+
 /* Bottom Navigation */
 .bottom-nav {
   position: fixed;
@@ -208,23 +218,60 @@ header {
 }
 
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .carousel {
-      height: 250px;
-  }
+/* Default Styles (Computers) */
+.card-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
   
-  .carousel-caption {
-      font-size: 1.5rem;
+}
+
+.card{
+  width: 30%;
+  height: 300px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  line-height: 300px;
+}
+
+.welcome-text h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+  .card {
+    width: 45%;
+    height: 250px;
+  }
+
+  .welcome-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-text p {
+    font-size: 1rem;
   }
 }
 
+/* Responsive Design for Phones */
 @media (max-width: 480px) {
-  .carousel {
-      height: 200px;
+  .card-image-top {
+    width: 100%;
+    height: 200px;
   }
-  
+
   .welcome-text h1 {
-      font-size: 1.2rem;
+    font-size: 1.5rem;
   }
-} 
+
+  .welcome-text p {
+    font-size: 0.9rem;
+  }
+}
