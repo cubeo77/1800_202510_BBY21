@@ -218,22 +218,6 @@ header {
 }
 
 
-/* Default Styles (Computers) */
-.card-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  
-}
-
-.card{
-  width: 30%;
-  height: 300px;
-  background-color: #4CAF50;
-  color: white;
-  text-align: center;
-  line-height: 300px;
-}
 
 .welcome-text h1 {
   font-size: 2.5rem;
@@ -246,7 +230,7 @@ header {
 
 /* Responsive Design for Tablets */
 @media (max-width: 768px) {
-  .card {
+  .card-image-top {
     width: 45%;
     height: 250px;
   }
@@ -262,16 +246,25 @@ header {
 
 /* Responsive Design for Phones */
 @media (max-width: 480px) {
-  .card-image-top {
-    width: 100%;
-    height: 200px;
+  .card-container {
+      flex-direction: column; /* Stack cards vertically */
+      gap: 10px; /* Reduce spacing */
   }
+  .card {
+      width: 90%; /* Adjust card width for phones */
+      margin: auto; /* Center cards */
+  }
+  .card img {
+      width: 100%; /* Image takes full width of card */
+      height: auto; /* Maintain aspect ratio */
+  }
+}
 
+@media (max-width: 480px) {
   .welcome-text h1 {
-    font-size: 1.5rem;
+      font-size: 1.2rem; /* Adjust heading size */
   }
-
   .welcome-text p {
-    font-size: 0.9rem;
+      font-size: 0.9rem; /* Adjust paragraph size */
   }
 }
