@@ -1,126 +1,123 @@
-// // Import Firebase modules properly
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytes,
-//   getDownloadURL,
-// } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-// import {
-//   getFirestore,
-//   collection,
-//   addDoc,
-// } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
-// // Firebase configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCIEt08N8EAKD2AjgGx1VghYx5XKkjipnU",
-//   authDomain: "demo10singhashmeet.firebaseapp.com",
-//   projectId: "demo10singhashmeet",
-//   storageBucket: "demo10singhashmeet.appspot.com",
-//   messagingSenderId: "430577309230",
-//   appId: "1:430577309230:web:335d186a1b8420166471bf",
-//   measurementId: "G-W05EP00RVC",
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const storage = getStorage(app);
-// const db = getFirestore(app);
-
-// Ensure DOM is loaded before running event listeners
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
+  /*-----------Element References----------*/
+
+  const fileInput = document.getElementById("file");
+  const imagePreview = document.getElementById("imagePreview");
+  const uploadButton = document.getElementById("uploadButton");
+  const descriptionInput = document.getElementById("inputname");
+
+  /*----------- Image Preview Handler ---------*/
+  fileInput.addEventListener("change", function () {
+    const file = fileInput.files[0];
+
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        imagePreview.src = e.target.result;
+        imagePreview.classList.add("show");
+      };
+      reader.readAsDataURL(file);
+    } else {
+      imagePreview.src = "";
+      imagePreview.classList.remove("show");
+    }
+  });
+
+  /*----------  Set Upload Button Loading State-------*/
+
   function setLoadingState(isLoading) {
-    const uploadButton = document.getElementById("uploadButton");
     uploadButton.disabled = isLoading;
     uploadButton.textContent = isLoading ? "Uploading..." : "Upload";
   }
 
-  // Function to validate and upload file
-  async function uploadFile(file, description, category) {
+  /*-------- Convert File to Base64 String------*/
+
+  function encodeFileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result.split(",")[1];
+        resolve(base64String);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /*------ Upload File to Firestore as Base64----*/
+
+  async function uploadFileAsBase64(file, description, category) {
+    /*---------Validation checks------*/
     if (!file) {
-      console.error(" No file selected.");
       alert("Please select an image file to upload.");
       return;
     }
 
-    console.log("Selected file:", file);
-
-    // Validate file type (only images)
     const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
-      console.error(" Invalid file type:", file.type);
       alert("Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP).");
       return;
     }
 
+    const maxSizeInBytes = 500 * 1024;
+    if (file.size > maxSizeInBytes) {
+      const sizeInKB = (file.size / 1024).toFixed(1);
+      alert(`Image is too large (${sizeInKB} KB). Please upload an image smaller than 500KB.`);
+      return;
+    }
+
     try {
-      console.log(" Uploading file to Firebase Storage...");
       setLoadingState(true);
+      const base64String = await encodeFileToBase64(file);
 
-      // Upload file to Firebase Storage
-      const storageRef = ref(storage, `uploads/${Date.now()}_${file.name}`);
-      const uploadTask = await uploadBytes(storageRef, file);
+      /*---------Check if user is signed in------*/
+      firebase.auth().onAuthStateChanged(async function (user) {
+        if (user) {
+          const userId = user.uid;
+          const uploadsCollection = db.collection("uploads").doc(category).collection("images");
 
-      console.log(" File successfully uploaded to Firebase Storage");
+          const docRef = await uploadsCollection.add({
+            userId: userId,
+            description: description,
+            category: category,
+            base64Image: base64String,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          });
 
-      // Get the file's URL
-      const fileURL = await getDownloadURL(uploadSnapshot.ref);
-      console.log(" File URL:", fileURL);
-
-      if (!fileURL) {
-        console.error(" Failed to retrieve file URL from Firebase Storage.");
-        alert("Error retrieving uploaded file URL.");
-        return;
-      }
-
-      // Save metadata in Firestore
-      console.log(" Saving metadata to Firestore...");
-      const uploadsCollection = collection(db, `uploads/${category}/images`);
-      await addDoc(uploadsCollection, {
-        fileURL: fileURL,
-        description: description,
-        category: category,
-        timestamp: new Date().toISOString(),
+          console.log("Document written with ID:", docRef.id);
+          alert("🎉 Upload successful!");
+        } else {
+          alert("User not signed in.");
+        }
       });
-
-      console.log("Document written in Firestore with ID:", docRef.id);
-      alert("🎉 Upload successful!");
     } catch (error) {
-      console.error(" Upload error:", error);
-      alert("Error uploading file. Check console for details.");
+      console.error("Upload error:", error);
+      alert("Error uploading image. See console for details.");
     } finally {
       setLoadingState(false);
     }
   }
 
-  // Event Listener for Upload Button
-  document.getElementById("uploadButton").addEventListener("click", async () => {
-    const fileInput = document.getElementById("file");
-    const descriptionInput = document.getElementById("inputname");
+  /*------- Upload Button Click Handler------*/
 
+  uploadButton.addEventListener("click", async () => {
     const file = fileInput.files[0];
     const description = descriptionInput.value.trim();
-
-    // Get selected category
     const selectedCard = document.querySelector(".card.selected");
     const category = selectedCard ? selectedCard.innerText : "Uncategorized";
 
-    console.log(" File:", file);
-    console.log(" Description:", description);
-    console.log("Category:", category);
-
     if (!description) {
-      alert(" Please enter a description.");
+      alert("Please enter a description.");
       return;
     }
 
-    await uploadFile(file, description, category);
+    await uploadFileAsBase64(file, description, category);
   });
 
-  // Event Listener for Category Selection
+  /*------- Category Selection Handler-----*/
+
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", function () {
       document.querySelectorAll(".card").forEach((c) => c.classList.remove("selected"));

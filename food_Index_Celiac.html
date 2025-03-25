@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Upload</title>
+    <title>Celiac</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <meta name="comp1800 template" content="My 1800 App" />
 
@@ -25,25 +25,27 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <!-- Boostrap Library JS CDN  go here -->
 
-    <!-- Other libraries -->
+    <!-- Other libraries go here -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-
-    <!-- Firebase UI (Must load before Firebase SDKs) -->
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
-
-    <!-- Custom styles -->
+    <!-- Link to styles of your own -->
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/Upload.css" />
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
     <link href="./favicon/favicon.ico" rel="icon" type="image/x-icon" />
   </head>
 
   <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
     <div id="container">
-      <!-- Navigation -->
+      <!--------------------------------------------------->
+      <!--Top Nav------------------------------------------>
+      <!--------------------------------------------------->
+
       <div class="top-nav2">
         <a href="">
           <div class="navLogo">
@@ -63,49 +65,60 @@
           </a>
         </div>
       </div>
+      <!--------------------------------------------------->
+      <!--------------------------------------------------->
+      <!--------------------------------------------------->
 
-      <!-- Upload Section -->
       <div class="body-container">
-        <div class="parent">
-          <div class="uploading">
-            <form class="file-upload-form">
-              <label for="file" class="file-upload-label">
-                <div class="file-upload-design">
-                  <svg viewBox="0 0 640 512" height="1em">
-                    <path
-                      d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z"
-                    ></path>
-                  </svg>
-                  <p>Drag and Drop</p>
-                  <p>or</p>
-                  <span class="browse-button">Browse file</span>
-                </div>
-                <input id="file" type="file" accept="image/*" />
-              </label>
-            </form>
-            <!-- Image Preview Container -->
-            <div id="imagePreviewContainer">
-              <img id="imagePreview" src="" alt="Image Preview" />
+        <!---------------------------------------------------------------------------------------->
+        <!--All Page Content Goes Here------------------------------------------------------------>
+        <!---------------------------------------------------------------------------------------->
+
+        <div class="card">
+          <a href="food_Index_Template.html">
+            <img src="images/gingerAleZero.png" class="card-img-top" alt="Diabetes" />
+            <div class="card-body">
+              <h5 class="card-title">Ginger Ale Zero</h5>
+              <p class="card-text">
+                Some text about this drink and how awesome it is for people with diabetes
+              </p>
             </div>
-          </div>
-
-          <div class="description">
-            <label for="inputname">Description</label>
-            <input type="text" id="inputname" name="inputname" placeholder="Short Description" />
-          </div>
-          <button id="uploadButton" class="btn btn-primary">Upload</button>
-
-          <div class="card-container">
-            <div class="card">Diabetic</div>
-            <div class="card">IBS</div>
-            <div class="card">Celiac</div>
-          </div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="food_Index_Template.html">
+            <img src="images/gingerAleZero.png" class="card-img-top" alt="Diabetes" />
+            <div class="card-body">
+              <h5 class="card-title">Ginger Ale Zero</h5>
+              <p class="card-text">
+                Some text about this drink and how awesome it is for people with diabetes
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="food_Index_Template.html">
+            <img src="images/gingerAleZero.png" class="card-img-top" alt="Diabetes" />
+            <div class="card-body">
+              <h5 class="card-title">Ginger Ale Zero</h5>
+              <p class="card-text">
+                Some text about this drink and how awesome it is for people with diabetes
+              </p>
+            </div>
+          </a>
         </div>
 
-        <div class="space"></div>
-      </div>
+        <!---------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------->
 
-      <!-- Bottom Navigation -->
+        <!--Do Not remove---------------------------->
+        <div class="space"></div>
+        <!--Do Not remove---------------------------->
+      </div>
+      <!--------------------------------------------------->
+      <!--Bottom Nav--------------------------------------->
+      <!--------------------------------------------------->
       <nav class="bottom-nav2">
         <a href="./main.html">
           <div class="bottom-nav-icon">
@@ -123,7 +136,13 @@
           </div>
         </a>
       </nav>
+      <!--------------------------------------------------->
+      <!--------------------------------------------------->
+      <!--------------------------------------------------->
     </div>
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -133,10 +152,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI_BBY21.js"></script>
-    <script src="./scripts/upload.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
   </body>
 </html>

@@ -5,6 +5,7 @@ body {
   background-color: #f4f4f4;
 }
 
+/* Top Navigation */
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -14,16 +15,13 @@ body {
   padding: 10px 20px;
 }
 
-.hamburger {
-  font-size: 54px;
-  cursor: pointer;
-}
-
+.hamburger,
 .profile-icon {
   font-size: 54px;
   cursor: pointer;
 }
 
+/* Profile Section */
 .profile-container {
   display: flex;
   flex-direction: column;
@@ -42,15 +40,17 @@ body {
   margin-bottom: 10px;
 }
 
+/* Post Count / Followers / Following */
 .info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
   grid-column-gap: 10px;
   margin-bottom: 10px;
   font-size: 16px;
+  text-align: center;
 }
 
+/* Buttons */
 .button-container {
   display: flex;
   justify-content: center;
@@ -65,18 +65,18 @@ body {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
+  color: white;
 }
 
 .share-profile {
   background-color: #4caf50;
-  color: white;
 }
 
 .edit-profile {
   background-color: #008cba;
-  color: white;
 }
 
+/* Profile Small GIFs */
 .small-img {
   width: 50px;
   height: 50px;
@@ -84,20 +84,23 @@ body {
   margin-top: 10px;
 }
 
+/* Post Grid */
 .post {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  gap: 10px;
   padding: 10px;
 }
 
+/* Image Card */
 .card {
-  width: 100%;
+  position: relative;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .card-img-top {
@@ -106,6 +109,30 @@ body {
   display: block;
 }
 
+.card.deleting {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* Delete Button */
+.delete-btn {
+  margin: 8px auto 10px;
+  display: block;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.delete-btn:hover {
+  background-color: #e60000;
+}
+
+/* Bottom Navigation */
 .bottom-nav {
   display: flex;
   justify-content: space-around;

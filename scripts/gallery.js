@@ -1,45 +1,49 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+document.addEventListener("DOMContentLoaded", () => {
+  const categories = ["Diabetic", "IBS", "Celiac"];
 
-// Firebase Configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCIEt08N8EAKD2AjgGx1VghYx5XKkjipnU",
-  authDomain: "demo10singhashmeet.firebaseapp.com",
-  projectId: "demo10singhashmeet",
-  storageBucket: "demo10singhashmeet.appspot.com",
-  messagingSenderId: "430577309230",
-  appId: "1:430577309230:web:335d186a1b8420166471bf",
-  measurementId: "G-W05EP00RVC",
-};
+  firebase.auth().onAuthStateChanged(async (user) => {
+    if (user) {
+      categories.forEach((category) => loadImages(category));
+    } else {
+      alert("Please sign in to view uploads.");
+    }
+  });
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  async function loadImages(category) {
+    const container = document.getElementById(category);
+    container.innerHTML = "<p>Loading...</p>";
 
-// Function to Load Images
-async function loadImages(category) {
-  const imagesContainer = document.getElementById(category);
-  imagesContainer.innerHTML = ""; // Clear existing content
+    try {
+      const snapshot = await db
+        .collection("uploads")
+        .doc(category)
+        .collection("images")
+        .orderBy("timestamp", "desc")
+        .get();
 
-  const querySnapshot = await getDocs(collection(db, `uploads/${category}/images`));
+      container.innerHTML = "";
 
-  querySnapshot.forEach((doc) => {
-    const data = doc.data();
+      if (snapshot.empty) {
+        container.innerHTML = "<p>No uploads yet.</p>";
+        return;
+      }
 
-    const imageElement = document.createElement("div");
-    imageElement.classList.add("image-card");
-    imageElement.innerHTML = `
-            <img src="${data.fileURL}" alt="${data.description}">
-            <p>${data.description}</p>
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+
+        const imageCard = document.createElement("div");
+        imageCard.classList.add("image-card");
+
+        imageCard.innerHTML = `
+          <img src="data:image/jpeg;base64,${data.base64Image}" alt="Uploaded Image">
+          <p>${data.description || "No description"}</p>
         `;
 
-    imagesContainer.appendChild(imageElement);
-  });
-}
-
-// Load Images for All Categories
-["Diabetic", "IBS", "Celiac"].forEach((category) => loadImages(category));
+        container.appendChild(imageCard);
+      });
+    } catch (err) {
+      console.error("Error loading images:", err);
+      container.innerHTML = "<p>Error loading images.</p>";
+    }
+  }
+});

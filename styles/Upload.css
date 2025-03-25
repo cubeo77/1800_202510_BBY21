@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Adjusts spacing between sections */
+  gap: 20px;
 }
 
 /* Uploading Section */
@@ -16,20 +16,44 @@
   cursor: pointer;
   background-color: #ddd;
   padding: 30px 70px;
-  border-radius: 10px; /* Reduced border-radius */
+  border-radius: 10px;
   border: 2px dashed rgb(82, 82, 82);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.2);
 }
 
 .file-upload-label svg {
   height: 50px;
   fill: rgb(82, 82, 82);
-  margin-bottom: 10px; /* Reduced spacing */
+  margin-bottom: 10px;
+}
+/*---image preview---*/
+#imagePreviewContainer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+#imagePreview {
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: scale(0.98);
+}
+
+#imagePreview.show {
+  opacity: 1;
+  transform: scale(1);
+}
+#imagePreview {
+  margin-bottom: 1rem;
 }
 
 /* Hide the file input */
@@ -44,8 +68,8 @@
   border-radius: 10px;
   color: white;
   transition: all 0.3s;
-  cursor: pointer; /* Makes it clickable */
-  display: inline-block; /* Ensures proper spacing */
+  cursor: pointer;
+  display: inline-block;
 }
 
 .browse-button:hover {
@@ -54,9 +78,9 @@
 
 /* Description Box */
 .description input {
-  width: 200px; /* Reduced width to match the image */
+  width: 200px;
   padding: 8px;
-  text-align: center; /* Centers placeholder text */
+  text-align: center;
   border-radius: 10px;
   border: 2px solid #ccc;
   outline: none;
@@ -71,8 +95,7 @@
 }
 
 .card {
-  width: 80px; /* Reduced width */
-  height: 50px; /* Reduced height */
+  width: 80px;
   background: rgba(217, 217, 217, 0.8);
   border-radius: 10px;
   display: flex;
