@@ -11,8 +11,7 @@ var uiConfig = {
                 firebase.firestore().collection("users").doc(user.uid).set({
                     name: user.displayName,
                     email: user.email,
-                    
-                    
+                  
                 }).then(function () {
                     console.log("New user added to Firestore");
                     window.location.assign("info.html"); // Redirect after sign-up
