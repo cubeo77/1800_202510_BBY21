@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     var title = doc.data().title;
                     var description = doc.data().description;
                     var imageSource = doc.data().imgSRC;
-                    // var userId = doc.data().userId; 
-                    // var rating = doc.data().rating;
-                    // var medicalCategory = doc.data().medicalCategory;
-                    // var postDate = doc.data().postDate;
-                    // let newcard = cardTemplate.content.cloneNode(true); 
+                    var userId = doc.data().userId; 
+                    var rating = doc.data().rating;
+                    var medicalCategory = doc.data().medicalCategory;
+                    var postDate = doc.data().postDate;
+                    let newcard = cardTemplate.content.cloneNode(true); 
 
                     let newCard = cardTemplate.content.cloneNode(true);
 
@@ -53,38 +53,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     displayCardsDynamically("posts");  //input param is the name of the collection
-    
-    // const myCollection = collection(db, "posts");
-
-    // async function getDocumentCount() {
-    //     const snapshot = await getCountFromServer(myCollection);
-    //     console.log("Total documents:", snapshot.data().count);
-    // }
-
-    // getDocumentCount();
-
-    // function buttonClicked(something) {
-
-    //     db.collection("Posts").doc(something)
-    //         .onSnapshot(someText => {
-    //             console.log("The text in firestore is: " + someText.data());
-    //             document.getElementById("test").innerHTML = someText.data().myWords;
-    //         }, (error) => {
-    //             console.log("Error calling onSnapshot", error);
-    //         });
-    // }
-
-    // function loadPosts() {
-
-    //     db.collection("posts")
-    // }
-    // loadPosts();
-
-    // console.log("Data is here: ", data);
-
-    //------------------------------------------------------------------------------
-    // Input parameter is a string representing the collection we are reading from
-
-
 });
 //------------------------------------------------------------------------------
