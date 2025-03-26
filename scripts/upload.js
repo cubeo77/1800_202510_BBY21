@@ -32,69 +32,62 @@ document.addEventListener("DOMContentLoaded", () => {
     uploadButton.textContent = isLoading ? "Uploading..." : "Upload";
   }
 
-  /*-------- Convert File to Base64 String------*/
+  /*------ Upload File to Firebase Storage and Save URL in Firestore ----*/
 
-  function encodeFileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result.split(",")[1];
-        resolve(base64String);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  }
-
-  /*------ Upload File to Firestore as Base64----*/
-
-  async function uploadFileAsBase64(file, description, category) {
-    /*---------Validation checks------*/
+  async function uploadFileToStorage(file, description, category) {
     if (!file) {
-      alert("Please select an image file to upload.");
+      Swal.fire("Please select an image file to upload.");
       return;
     }
 
     const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
-      alert("Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP).");
+      Swal.fire("Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP).");
       return;
     }
 
-    const maxSizeInBytes = 500 * 1024;
+    const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
     if (file.size > maxSizeInBytes) {
-      const sizeInKB = (file.size / 1024).toFixed(1);
-      alert(`Image is too large (${sizeInKB} KB). Please upload an image smaller than 500KB.`);
+      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+      Swal.fire(`Image is too large (${sizeInMB} MB). Please upload an image smaller than 500KB.`);
       return;
     }
 
     try {
       setLoadingState(true);
-      const base64String = await encodeFileToBase64(file);
 
-      /*---------Check if user is signed in------*/
       firebase.auth().onAuthStateChanged(async function (user) {
         if (user) {
           const userId = user.uid;
-          const uploadsCollection = db.collection("uploads").doc(category).collection("images");
+          const storageRef = firebase.storage().ref();
+          const imageRef = storageRef.child(`uploads/${category}/${Date.now()}_${file.name}`);
 
+          // Upload image to Firebase Storage
+          await imageRef.put(file);
+
+          // Get public download URL
+          const downloadURL = await imageRef.getDownloadURL();
+
+          // Save metadata to Firestore
+          const uploadsCollection = db.collection("uploads").doc(category).collection("images");
           const docRef = await uploadsCollection.add({
             userId: userId,
             description: description,
             category: category,
-            base64Image: base64String,
+            imageUrl: downloadURL,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           });
 
           console.log("Document written with ID:", docRef.id);
-          alert("🎉 Upload successful!");
+          Swal.fire("🎉 Upload successful!  Redirecting to your profile...");
+          window.location.href = "profile.html";
         } else {
-          alert("User not signed in.");
+          Swal.fire("User not signed in.");
         }
       });
     } catch (error) {
       console.error("Upload error:", error);
-      alert("Error uploading image. See console for details.");
+      Swal.fire("Error uploading image. See console for details.");
     } finally {
       setLoadingState(false);
     }
@@ -106,14 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const file = fileInput.files[0];
     const description = descriptionInput.value.trim();
     const selectedCard = document.querySelector(".card.selected");
-    const category = selectedCard ? selectedCard.innerText : "Uncategorized";
 
+    if (!selectedCard) {
+      Swal.fire("Please select a category before uploading.");
+      return;
+    }
+    const category = selectedCard.innerText;
     if (!description) {
-      alert("Please enter a description.");
+      Swal.fire("Please enter a description.");
       return;
     }
 
-    await uploadFileAsBase64(file, description, category);
+    await uploadFileToStorage(file, description, category);
   });
 
   /*------- Category Selection Handler-----*/
