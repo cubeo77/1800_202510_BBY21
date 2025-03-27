@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
-  /*-----------Element References----------*/
-
   const fileInput = document.getElementById("file");
   const imagePreview = document.getElementById("imagePreview");
   const uploadButton = document.getElementById("uploadButton");
   const descriptionInput = document.getElementById("inputname");
 
-  /*----------- Image Preview Handler ---------*/
+  // Image Preview
   fileInput.addEventListener("change", function () {
     const file = fileInput.files[0];
-
     if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
       reader.onload = function (e) {
@@ -25,15 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /*----------  Set Upload Button Loading State-------*/
-
+  // Upload Button Loading State
   function setLoadingState(isLoading) {
     uploadButton.disabled = isLoading;
     uploadButton.textContent = isLoading ? "Uploading..." : "Upload";
   }
 
-  /*------ Upload File to Firebase Storage and Save URL in Firestore ----*/
-
+  // Upload to Firebase Storage
   async function uploadFileToStorage(file, description, category) {
     if (!file) {
       Swal.fire("Please select an image file to upload.");
@@ -49,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
     if (file.size > maxSizeInBytes) {
       const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
-      Swal.fire(`Image is too large (${sizeInMB} MB). Please upload an image smaller than 500KB.`);
+      Swal.fire(`Image is too large (${sizeInMB} MB). Please upload an image smaller than 2MB.`);
       return;
     }
 
@@ -59,16 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {
       firebase.auth().onAuthStateChanged(async function (user) {
         if (user) {
           const userId = user.uid;
-          const storageRef = firebase.storage().ref();
+          const storage = firebase.storage();
+          const storageRef = storageRef();
           const imageRef = storageRef.child(`uploads/${category}/${Date.now()}_${file.name}`);
 
-          // Upload image to Firebase Storage
+          // Upload image
           await imageRef.put(file);
 
-          // Get public download URL
+          // Get URL
           const downloadURL = await imageRef.getDownloadURL();
 
-          // Save metadata to Firestore
+          // Save to Firestore
           const uploadsCollection = db.collection("uploads").doc(category).collection("images");
           const docRef = await uploadsCollection.add({
             userId: userId,
@@ -79,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
           console.log("Document written with ID:", docRef.id);
-          Swal.fire("🎉 Upload successful!  Redirecting to your profile...");
+          Swal.fire("🎉 Upload successful! Redirecting to your profile...");
           window.location.href = "profile.html";
         } else {
           Swal.fire("User not signed in.");
@@ -93,8 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /*------- Upload Button Click Handler------*/
-
+  // Upload Button Click
   uploadButton.addEventListener("click", async () => {
     const file = fileInput.files[0];
     const description = descriptionInput.value.trim();
@@ -104,7 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
       Swal.fire("Please select a category before uploading.");
       return;
     }
+
     const category = selectedCard.innerText;
+
     if (!description) {
       Swal.fire("Please enter a description.");
       return;
@@ -113,8 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     await uploadFileToStorage(file, description, category);
   });
 
-  /*------- Category Selection Handler-----*/
-
+  // Category Selection
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", function () {
       document.querySelectorAll(".card").forEach((c) => c.classList.remove("selected"));
