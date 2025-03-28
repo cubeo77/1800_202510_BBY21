@@ -5,48 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="styles/profile.css" />
-
+    <link rel="stylesheet" href="./styles/profile.css" />
     <meta name="comp1800 template" content="My 1800 App" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- FireBase/FireStore -->
+    <!-- Firebase -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
-    <!-- Bootstrap Library CSS CDN go here -->
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
     />
     <link href="./favicon/favicon.ico" rel="icon" type="image/x-icon" />
-    <!-- Boostrap Library JS CDN  go here -->
-
-    <!-- Other libraries go here -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
   </head>
 
   <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
     <div id="container">
-      <!--------------------------------------------------->
-      <!--Top Nav------------------------------------------>
-      <!--------------------------------------------------->
+      <!-- Top Nav -->
       <div class="top-nav2">
         <a href="">
           <div class="navLogo">
@@ -66,56 +49,53 @@
           </a>
         </div>
       </div>
-      <!--------------------------------------------------->
-      <!--------------------------------------------------->
-      <!--------------------------------------------------->
 
+      <!-- Main Body -->
       <div class="body-container">
-        <!---------------------------------------------------------------------------------------->
-        <!--All Page Content Goes Here------------------------------------------------------------>
-        <!---------------------------------------------------------------------------------------->
-
-        <div class="profile-container">
+        <div class="profile-container" style="text-align: center">
           <div class="profile-img">
             <img
+              id="profileImage"
               src="/images/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.png"
-              alt="Profile Image"
+              alt="Profile"
               class="profile-img"
             />
           </div>
+
+          <!-- User Name + Bio (Only One Block!) -->
+          <h3 id="userDisplayName">Your Name</h3>
+          <p id="userBio">Short bio goes here...</p>
+
           <div class="info">
             <p id="postCount"><br />posts</p>
-
             <p>100K <br />followers</p>
             <p>1 <br />following</p>
           </div>
 
-          <div class="button-container">
-            <button class="share-profile">Share profile</button>
+          <!-- Buttons -->
+          <div class="button-container d-flex justify-content-center gap-3 position-relative">
+            <div style="position: relative">
+              <button class="share-profile" id="shareProfileBtn">Share profile</button>
+              <span id="copyTooltip" class="copy-tooltip">Copied!</span>
+            </div>
             <button class="edit-profile">Edit profile</button>
           </div>
+
           <div class="imggif">
-            <img src="/images/giphy.gif" alt="Small Profile Image" class="small-img" />
-            <img src="/images/giphy.gif" alt="Small Profile Image" class="small-img" />
+            <img src="/images/giphy.gif" alt="gif1" class="small-img" />
+            <img src="/images/giphy.gif" alt="gif2" class="small-img" />
           </div>
         </div>
 
+        <!-- User's Posts -->
         <div class="post">
-          <!-- Posts will be loaded here dynamically via JS -->
+          <!-- Populated by JS -->
         </div>
 
-        <!---------------------------------------------------------------------------------------->
-        <!---------------------------------------------------------------------------------------->
-        <!---------------------------------------------------------------------------------------->
-
-        <!--Do Not remove---------------------------->
         <div class="space"></div>
-        <!--Do Not remove---------------------------->
       </div>
 
-      <!--------------------------------------------------->
-      <!--Bottom Nav--------------------------------------->
-      <!--------------------------------------------------->
+      <!-- Bottom Nav -->
       <nav class="bottom-nav2">
         <a href="./main.html">
           <div class="bottom-nav-icon">
@@ -133,25 +113,12 @@
           </div>
         </a>
       </nav>
-      <!--------------------------------------------------->
-      <!--------------------------------------------------->
-      <!--------------------------------------------------->
     </div>
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/profile.js"></script>
-    <script src="./scripts/firebaseAPI_BBY21.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/firebaseAPI_BBY21.js"></script>
+    <script src="./scripts/profile.js"></script>
   </body>
 </html>

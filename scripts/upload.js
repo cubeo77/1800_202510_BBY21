@@ -1,19 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
+  const ToastStyle = Swal.mixin({
+    background: "#f1fff0",
+    confirmButtonColor: "#4caf50",
+    cancelButtonColor: "#388e3c",
+    color: "#1b5e20",
+    iconColor: "#4caf50",
+  });
+
   const fileInput = document.getElementById("file");
   const imagePreview = document.getElementById("imagePreview");
   const uploadButton = document.getElementById("uploadButton");
   const descriptionInput = document.getElementById("inputname");
 
-  // Image Preview
+  // Show Image Preview
   fileInput.addEventListener("change", function () {
     const file = fileInput.files[0];
     if (file && file.type.startsWith("image/")) {
       const reader = new FileReader();
+      imagePreview.classList.remove("show");
+
       reader.onload = function (e) {
-        imagePreview.src = e.target.result;
-        imagePreview.classList.add("show");
+        setTimeout(() => {
+          imagePreview.src = e.target.result;
+          imagePreview.onload = () => {
+            imagePreview.classList.add("show");
+          };
+        }, 150);
       };
       reader.readAsDataURL(file);
     } else {
@@ -22,68 +36,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Upload Button Loading State
+  // Button Loading State
   function setLoadingState(isLoading) {
     uploadButton.disabled = isLoading;
     uploadButton.textContent = isLoading ? "Uploading..." : "Upload";
   }
 
-  // Upload to Firebase Storage
-  async function uploadFileToStorage(file, description, category) {
-    if (!file) {
-      Swal.fire("Please select an image file to upload.");
-      return;
-    }
+  // Upload Only Once (to first selected category)
+  async function uploadFileAsBase64ToFirestore(file, description, categories) {
+    if (!file) return ToastStyle.fire("Please select an image file to upload.");
 
     const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
-      Swal.fire("Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP).");
-      return;
+      return ToastStyle.fire("Invalid file type. Please use JPEG, PNG, GIF, or WebP.");
     }
 
-    const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
-    if (file.size > maxSizeInBytes) {
-      const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
-      Swal.fire(`Image is too large (${sizeInMB} MB). Please upload an image smaller than 2MB.`);
-      return;
+    const maxSize = 500 * 1024;
+    if (file.size > maxSize) {
+      const sizeInKB = (file.size / 1024).toFixed(1);
+      return ToastStyle.fire(`Image too large (${sizeInKB} KB). Must be under 500KB.`);
     }
 
+    const db = firebase.firestore();
     try {
       setLoadingState(true);
+      const progressBar = document.getElementById("uploadProgressBar");
+      progressBar.style.width = "0%";
 
-      firebase.auth().onAuthStateChanged(async function (user) {
-        if (user) {
-          const userId = user.uid;
-          const storage = firebase.storage();
-          const storageRef = storageRef();
-          const imageRef = storageRef.child(`uploads/${category}/${Date.now()}_${file.name}`);
+      firebase.auth().onAuthStateChanged(async (user) => {
+        if (!user) return ToastStyle.fire("User not signed in.");
 
-          // Upload image
-          await imageRef.put(file);
+        const reader = new FileReader();
 
-          // Get URL
-          const downloadURL = await imageRef.getDownloadURL();
+        reader.onloadstart = () => {
+          progressBar.style.width = "10%";
+        };
 
-          // Save to Firestore
-          const uploadsCollection = db.collection("uploads").doc(category).collection("images");
-          const docRef = await uploadsCollection.add({
-            userId: userId,
-            description: description,
-            category: category,
-            imageUrl: downloadURL,
+        reader.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const percent = Math.min(70, (e.loaded / e.total) * 70);
+            progressBar.style.width = `${percent.toFixed(0)}%`;
+          }
+        };
+
+        reader.onloadend = async () => {
+          progressBar.style.width = "85%";
+          const base64String = reader.result;
+
+          const chosenCategory = categories[0]; // ✅ Upload only to first selected category
+
+          await db.collection("uploads").doc(chosenCategory).collection("images").add({
+            userId: user.uid,
+            description,
+            category: chosenCategory,
+            imageBase64: base64String,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           });
 
-          console.log("Document written with ID:", docRef.id);
-          Swal.fire("🎉 Upload successful! Redirecting to your profile...");
-          window.location.href = "profile.html";
-        } else {
-          Swal.fire("User not signed in.");
-        }
+          progressBar.style.width = "100%";
+          ToastStyle.fire("🎉 Upload successful! Redirecting...");
+          setTimeout(() => (window.location.href = "profile.html"), 1200);
+        };
+
+        reader.readAsDataURL(file);
       });
     } catch (error) {
       console.error("Upload error:", error);
-      Swal.fire("Error uploading image. See console for details.");
+      ToastStyle.fire("Error uploading. See console.");
     } finally {
       setLoadingState(false);
     }
@@ -93,29 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
   uploadButton.addEventListener("click", async () => {
     const file = fileInput.files[0];
     const description = descriptionInput.value.trim();
-    const selectedCard = document.querySelector(".card.selected");
+    const selected = Array.from(document.querySelectorAll(".card.selected")).map(
+      (c) => c.innerText
+    );
 
-    if (!selectedCard) {
-      Swal.fire("Please select a category before uploading.");
-      return;
-    }
+    if (selected.length === 0) return ToastStyle.fire("Please select at least one category.");
+    if (!description) return ToastStyle.fire("Please enter a description.");
 
-    const category = selectedCard.innerText;
-
-    if (!description) {
-      Swal.fire("Please enter a description.");
-      return;
-    }
-
-    await uploadFileToStorage(file, description, category);
+    await uploadFileAsBase64ToFirestore(file, description, selected);
   });
 
-  // Category Selection
+  // Multi-category select UI
   document.querySelectorAll(".card").forEach((card) => {
-    card.addEventListener("click", function () {
-      document.querySelectorAll(".card").forEach((c) => c.classList.remove("selected"));
-      this.classList.add("selected");
-      console.log("Category selected:", this.innerText);
+    card.addEventListener("click", () => {
+      card.classList.toggle("selected");
     });
   });
 });

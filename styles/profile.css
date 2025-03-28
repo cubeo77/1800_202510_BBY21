@@ -149,3 +149,56 @@ body {
   font-size: 24px;
   cursor: pointer;
 }
+.copy-tooltip {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+/* Profile Modal Custom */
+.profile-modal {
+  border-radius: 20px !important;
+  padding: 20px !important;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Buttons */
+.green-btn {
+  background-color: #4caf50 !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.green-btn:hover {
+  background-color: #3a9d40 !important;
+}
+
+.gray-btn {
+  background-color: #6e7b6e !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.gray-btn:hover {
+  background-color: #5c685c !important;
+}
