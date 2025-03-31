@@ -64,14 +64,18 @@ function saveUserInfo() {
         name: userName,
         age: userAge,
         healthCondition: userHealthCondition
+        
     })
     .then(() => {
         console.log("Document successfully updated!");
+       
 
     })
 
     //c) disable edit 
     document.getElementById('personalInfoFields').disabled = true;
+    window.location.assign("main.html"); 
 }
+
 
 
