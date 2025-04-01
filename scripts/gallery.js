@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const categories = ["Diabetic", "IBS", "Celiac"];
 
+
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
       categories.forEach((category) => loadImages(category));
