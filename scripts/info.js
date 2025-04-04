@@ -48,8 +48,13 @@ populateUserInfo();
 function editUserInfo() {
   //Enable the form fields
   document.getElementById("personalInfoFields").disabled = false;
+
 }
 
+document.getElementById("save-user-info").addEventListener("click", () => {
+  saveUserInfo();
+  window.location.assign("main.html"); 
+});
 
 function saveUserInfo() {
 
@@ -74,7 +79,6 @@ function saveUserInfo() {
 
     //c) disable edit 
     document.getElementById('personalInfoFields').disabled = true;
-    window.location.assign("main.html"); 
 }
 
 
