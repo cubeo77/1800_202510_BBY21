@@ -9,7 +9,6 @@ button.addEventListener("click", () => {
 });
 
 
-
 var currentUser;               //points to the document of the user who is logged in
 function populateUserInfo() {
   firebase.auth().onAuthStateChanged((user) => {
@@ -52,6 +51,7 @@ function editUserInfo() {
 
 
 function saveUserInfo() {
+   
 
     //a) Get user entered values 
 
@@ -66,15 +66,14 @@ function saveUserInfo() {
         healthCondition: userHealthCondition
         
     })
+    
     .then(() => {
         console.log("Document successfully updated!");
-       
+        document.getElementById('personalInfoFields').disabled = true;
+        window.location.assign("main.html");
 
     })
-
-    //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
-    window.location.assign("main.html"); 
+      
 }
 
 
