@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.innerHTML = `
                         <img src="${post.imageBase64 || 'default-placeholder.jpg'}" class="card-img-top" alt="Uploaded Image" />
                         <div class="card-body">
-                            <h5 class="card-title">${post.title || "No Title"}</h5>
                             <p class="card-text">${post.description || "No description available."}</p>
 
                         </div>
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     console.log(newCard);
                     //update title and text and image
-                    newCard.querySelector('.card-title').innerHTML = title;
+                    // newCard.querySelector('.card-title').innerHTML = title;
                     newCard.querySelector('.card-text').innerHTML = description;
                     newCard.querySelector('.card-img-top').src = `./${imageSource}`;
 

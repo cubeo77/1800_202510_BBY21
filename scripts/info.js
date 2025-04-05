@@ -53,7 +53,6 @@ function editUserInfo() {
 
 document.getElementById("save-user-info").addEventListener("click", () => {
   saveUserInfo();
-  window.location.assign("main.html"); 
 });
 
 function saveUserInfo() {
@@ -73,12 +72,11 @@ function saveUserInfo() {
     })
     .then(() => {
         console.log("Document successfully updated!");
-       
-
+        document.getElementById('personalInfoFields').disabled = true;
+        window.location.assign("main.html"); 
     })
 
     //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
 }
 
 
