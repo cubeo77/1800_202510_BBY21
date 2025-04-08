@@ -47,8 +47,12 @@ populateUserInfo();
 function editUserInfo() {
   //Enable the form fields
   document.getElementById("personalInfoFields").disabled = false;
+
 }
 
+document.getElementById("save-user-info").addEventListener("click", () => {
+  saveUserInfo();
+});
 
 function saveUserInfo() {
    

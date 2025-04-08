@@ -32,9 +32,12 @@ body {
   border-radius: 40px; /* Center the button horizontally */
   animation: flash 2s infinite; /* Apply the flashing animation */
 }
+.button-container {
+  margin-top: 5%;
+}
 
 .button-container :hover{
- background-color: rgb(161, 211, 161);
+  background-color: rgb(161, 211, 161);
 }
 
 @keyframes flash {
@@ -184,8 +187,8 @@ header {
   
 
 .responsive {
-  width: 100%;
-  height: auto;
+  /* width: 100%;
+  height: auto; */
 }
 
 .rounded-circle {

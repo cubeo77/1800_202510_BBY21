@@ -112,6 +112,10 @@ Navigation - Do not Change -------------------------------------
   width: 100%;
   background-color: rgb(126, 162, 120);
 }
+#upload-button {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 .menu-btn,
@@ -186,6 +190,7 @@ Food Index - For Scrolling Pages -------------------------------
   text-align: center;
   border-radius: 0px;
   border-color: #96b99e;
+  background-color: rgb(192, 217, 184);
   border-width: 2px;
 
   margin-top: 30px;
@@ -207,9 +212,10 @@ Food Index - For Scrolling Pages -------------------------------
   padding: 0px;
   padding-top: 0.5rem;
   width: 100%;
+  color: rgb(15, 74, 21);
 
   text-align: left;
-  background-color: rgb(210, 210, 210);
+  background-color: rgba(210, 210, 210, 0);
   /* border-radius: 0px 0px 8px 8px; */
   /* border: 1px solid #000000; */
 }
@@ -241,10 +247,6 @@ Food Index - For Scrolling Pages -------------------------------
   color: #666;
   line-height: 1.5;
 }
-.responsive {
-  width: 100%;
-  height: auto;
-}
 .welcome-text {
   text-align: center;
   padding: 2rem;
@@ -254,6 +256,18 @@ Food Index - For Scrolling Pages -------------------------------
 .welcome-text h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+#login-firebase {
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 10%;
+}
+#info-textbox {
+  display: flex;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 .welcome-text p {
@@ -265,12 +279,17 @@ Food Index - For Scrolling Pages -------------------------------
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
   
+}
+#salid-bowl {
+  width: 50%;
 }
 
 .responsive {
-  width: 100%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
   height: auto;
 }
 .rounded-circle {
